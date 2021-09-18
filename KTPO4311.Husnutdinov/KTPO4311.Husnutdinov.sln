@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTPO4311.Husnutdinov.UnitTest", "KTPO4311.Husnutdinov.UnitTest\KTPO4311.Husnutdinov.UnitTest.csproj", "{4157E8D2-86F3-4F28-9530-0717AD3B1432}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTPO4311.Husnutdinov.Lib", "KTPO4311.Husnutdinov.Lib\KTPO4311.Husnutdinov.Lib.csproj", "{712A995B-C47D-4266-A48A-D902EFD6AF34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4157E8D2-86F3-4F28-9530-0717AD3B1432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4157E8D2-86F3-4F28-9530-0717AD3B1432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4157E8D2-86F3-4F28-9530-0717AD3B1432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4157E8D2-86F3-4F28-9530-0717AD3B1432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{712A995B-C47D-4266-A48A-D902EFD6AF34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{712A995B-C47D-4266-A48A-D902EFD6AF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{712A995B-C47D-4266-A48A-D902EFD6AF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{712A995B-C47D-4266-A48A-D902EFD6AF34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F170465-3249-4792-9129-6BFB46F30591}
+	EndGlobalSection
+EndGlobal
