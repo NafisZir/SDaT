@@ -5,56 +5,68 @@ using System;
 namespace KTPO4311.Husnutdinov.UnitTest.src.LogAn
 {
     [TestFixture]
-    class LogAnalyzerTests
+    public class LogAnalyzerTests
     {
         [Test]
-        public void IsValidLogFileName_BadExtension_ReturnFalse()
+        public void IsValidFileName_NameSupportedExtens_ReturnsTrue()
         {
-            LogAnalyzer analyzer = new LogAnalyzer();
-            bool result = analyzer.IsValidLogFileName("filewithbadextension.foo");
+            FakeExtensionManager fakeManager = new FakeExtensionManager();
+            fakeManager.WillBeValid = true;
+
+            LogAnalyzer log = new LogAnalyzer(fakeManager);
+
+            bool result = log.IsValidLogFileName("short.ext");
+
+            Assert.True(result);
+        }
+
+        [Test]
+        public void IsValidFileName_NoneSupportedExtens_ReturnsFalse()
+        {
+            FakeExtensionManager fakeManager = new FakeExtensionManager();
+            fakeManager.WillBeValid = false;
+
+            LogAnalyzer log = new LogAnalyzer(fakeManager);
+
+            bool result = log.IsValidLogFileName("short.ext");
+
             Assert.False(result);
         }
 
         [Test]
-        public void IsValidLogFileName_GoodExtensionUppercase_ReturnsTrue()
+        public void IsValidFileName_ExtManagerThrowsException_ReturnFalse()
         {
-            LogAnalyzer analyzer = new LogAnalyzer();
-            bool result = analyzer.IsValidLogFileName("filewithgoodextension.HUSNUTDINOV");
-            Assert.True(result);
-        }
+            try
+            {
+                FakeExtensionManager fakeManager = new FakeExtensionManager();
+                fakeManager.WillThrow = new Exception();
 
-        [Test]
-        public void IsValidLogFileName_GoodExtensionLowercase_ReturnsTrue()
-        {
-            LogAnalyzer analyzer = new LogAnalyzer();
-            bool result = analyzer.IsValidLogFileName("filewithgoodextension.husnutdinov");
-            Assert.True(result);
-        }
+                LogAnalyzer log = new LogAnalyzer(fakeManager);
 
-        [TestCase("filewithgoodextension.HUSNUTDINOV")]
-        [TestCase("filewithgoodextension.husnutdinov")]
-        public void IsValidLogFileName_ValidExtension_ReturnsTrue(string file)
-        {
-            LogAnalyzer analyzer = new LogAnalyzer();
-            bool result = analyzer.IsValidLogFileName(file);
-            Assert.True(result);
+                bool result = log.IsValidLogFileName("short.ext");
+            } catch(Exception e)
+            {
+                Assert.False(false);
+            }
         }
+    }
 
-        [Test]
-        public void IsValidFileName_EmptyFileName_Throws()
-        {
-            LogAnalyzer analyzer = new LogAnalyzer();
-            var ex = Assert.Catch<Exception>(() => analyzer.IsValidLogFileName(""));
-            StringAssert.Contains("имя файла должно быть задано", ex.Message);
-        }
+    /// <summary>Поддельный менеджер расширений</summary>
+    internal class FakeExtensionManager : IExtensionManager
+    {
+        /// <summary>Это поле позволяет настроить
+        /// поддельный результат для метода IsValid</summary>
+        public bool WillBeValid = false;
 
-        [TestCase("badfile.foo", true)]
-        [TestCase("goodfile.husnutdinov", false)]
-        public void IsValidFileName_WhenCalled_ChangesWasLastFileNameValid(string file, bool expected)
+        public Exception WillThrow = null;
+        public bool IsValid(string fileName)
         {
-            LogAnalyzer analyzer = new LogAnalyzer();
-            analyzer.IsValidLogFileName(file);
-            Assert.AreEqual(expected, analyzer.WasLastedFileNameValed);
+            if(WillThrow != null)
+            {
+                throw WillThrow;
+            }
+
+            return WillBeValid;
         }
     }
 }
