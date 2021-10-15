@@ -6,9 +6,9 @@
     {
         IExtensionManager extensionManager;
 
-        public LogAnalyzer(IExtensionManager eMng)
+        public LogAnalyzer()
         {
-            extensionManager = eMng;
+            extensionManager = ExtensionManagerFactory.Create();
         }
         public bool IsValidLogFileName(string fileName)
         {
