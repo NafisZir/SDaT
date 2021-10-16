@@ -1,4 +1,6 @@
-﻿namespace KTPO4311.Husnutdinov.Lib.src.LogAn
+﻿using System;
+
+namespace KTPO4311.Husnutdinov.Lib.src.LogAn
 {
     /// <summary>Анализатор лог. файлов</summary>
     public class LogAnalyzer
@@ -12,7 +14,13 @@
         }
         public bool IsValidLogFileName(string fileName)
         {
-            return extensionManager.IsValid(fileName);
+            try
+            {
+                return extensionManager.IsValid(fileName);
+            } catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

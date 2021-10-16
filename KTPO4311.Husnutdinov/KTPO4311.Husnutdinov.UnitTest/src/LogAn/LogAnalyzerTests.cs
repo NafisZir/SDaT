@@ -13,9 +13,11 @@ namespace KTPO4311.Husnutdinov.UnitTest.src.LogAn
             FakeExtensionManager fakeManager = new FakeExtensionManager();
             fakeManager.WillBeValid = true;
 
-            LogAnalyzer log = new LogAnalyzer(fakeManager);
+            ExtensionManagerFactory.SetManager(fakeManager);
 
-            bool result = log.IsValidLogFileName("short.ext");
+            LogAnalyzer log = new LogAnalyzer();
+
+            bool result = log.IsValidLogFileName("fileName.txt");
 
             Assert.True(result);
         }
@@ -26,7 +28,9 @@ namespace KTPO4311.Husnutdinov.UnitTest.src.LogAn
             FakeExtensionManager fakeManager = new FakeExtensionManager();
             fakeManager.WillBeValid = false;
 
-            LogAnalyzer log = new LogAnalyzer(fakeManager);
+            ExtensionManagerFactory.SetManager(fakeManager);
+
+            LogAnalyzer log = new LogAnalyzer();
 
             bool result = log.IsValidLogFileName("short.ext");
 
@@ -36,18 +40,23 @@ namespace KTPO4311.Husnutdinov.UnitTest.src.LogAn
         [Test]
         public void IsValidFileName_ExtManagerThrowsException_ReturnFalse()
         {
-            try
-            {
-                FakeExtensionManager fakeManager = new FakeExtensionManager();
-                fakeManager.WillThrow = new Exception();
+           
+            FakeExtensionManager fakeManager = new FakeExtensionManager();
+            fakeManager.WillThrow = new Exception();
 
-                LogAnalyzer log = new LogAnalyzer(fakeManager);
+            ExtensionManagerFactory.SetManager(fakeManager);
 
-                bool result = log.IsValidLogFileName("short.ext");
-            } catch(Exception e)
-            {
-                Assert.False(false);
-            }
+            LogAnalyzer log = new LogAnalyzer();
+
+            bool result = log.IsValidLogFileName("short.ext");
+
+            Assert.False(result);
+        }
+
+        [TearDown]
+        public void AfterEachTest()
+        {
+            ExtensionManagerFactory.SetManager(null);
         }
     }
 
