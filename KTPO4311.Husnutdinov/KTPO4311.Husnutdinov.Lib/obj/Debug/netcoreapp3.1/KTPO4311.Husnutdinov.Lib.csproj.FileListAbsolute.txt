@@ -6,3 +6,4 @@ C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Lib\bin\Debug\netcoreapp3.1\KTPO
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Lib\bin\Debug\netcoreapp3.1\KTPO4311.Husnutdinov.Lib.pdb
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Lib\obj\Debug\netcoreapp3.1\KTPO4311.Husnutdinov.Lib.dll
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Lib\obj\Debug\netcoreapp3.1\KTPO4311.Husnutdinov.Lib.pdb
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Lib\obj\Debug\netcoreapp3.1\KTPO4311.Husnutdinov.Lib.csprojAssemblyReference.cache

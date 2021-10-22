@@ -53,10 +53,53 @@ namespace KTPO4311.Husnutdinov.UnitTest.src.LogAn
             Assert.False(result);
         }
 
+        [Test]
+        public void Analyze_TooShortFileName_CallsWebService()
+        {
+            //Подготовка теста
+            FakeWebService mockWebService = new FakeWebService();
+            WebServiceFactory.SetService(mockWebService);
+            LogAnalyzer log = new LogAnalyzer();
+            string tooShortFileName = "abc.ext";
+
+            //Воздействие на тестируемый объект
+            log.Analyze(tooShortFileName);
+
+            //Проврека ожидаемого результата
+            StringAssert.Contains("слишком короткое имя файла: abc.ext", mockWebService.LastError);
+        }
+
+        [Test]
+        public void Analyze_WebServiceThrows_SendsEmail()
+        {
+            //Подготовка теста
+            FakeWebService stubWebService = new FakeWebService();
+            WebServiceFactory.SetService(stubWebService);
+            stubWebService.WillThrow = new Exception("это подделка");
+
+            FakeEmailService mockEmail = new FakeEmailService();
+            EmailServiceFactory.SetService(mockEmail);
+
+            LogAnalyzer log = new LogAnalyzer();
+            string tooShortFileName = "abc.ext";
+
+            //Воздействие на тестируемый объект
+            log.Analyze(tooShortFileName);
+
+            //Проверка ожидаемого результата
+            //...здесь тест будет ложным, если неверно хотя бы одно утверждение
+            //...поэтому здесь допустимо несколько утверждений
+            StringAssert.Contains("someone@somewhere.com", mockEmail.lastTo);
+            StringAssert.Contains("это подделка", mockEmail.lastBody);
+            StringAssert.Contains("Невозможно вызвать веб-сервис", mockEmail.lastSubject);
+        }
+
         [TearDown]
         public void AfterEachTest()
         {
             ExtensionManagerFactory.SetManager(null);
+            WebServiceFactory.SetService(null);
+            EmailServiceFactory.SetService(null);
         }
     }
 
@@ -76,6 +119,39 @@ namespace KTPO4311.Husnutdinov.UnitTest.src.LogAn
             }
 
             return WillBeValid;
+        }
+    }
+
+    /// <summary>Поддельная веб-служба</summary>
+    internal class FakeWebService : IWebService
+    {
+        /// <summary>Это поле запоминает состояние после вызова метода LogError
+        /// при тестировании взаимодействия утверждения высказываются относительно</summary>
+        public string LastError;
+        public Exception WillThrow = null;
+
+        public void LogError(string message)
+        {
+            if(WillThrow != null)
+            {
+                throw WillThrow;
+            }
+            else
+            {
+                LastError = message;
+            }
+        }
+    }
+    internal class FakeEmailService : IEmailService
+    {
+        public string lastTo;
+        public string lastSubject;
+        public string lastBody;
+        public void SendEmail(string to, string subject, string body)
+        {
+            lastTo = to;
+            lastSubject = subject;
+            lastBody = body;
         }
     }
 }
