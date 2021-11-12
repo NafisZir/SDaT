@@ -108,6 +108,10 @@
               "target": "Package",
               "version": "[16.11.0, )"
             },
+            "NSubstitute": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
             "NUnit": {
               "target": "Package",
               "version": "[3.13.2, )"
