@@ -94,6 +94,23 @@ namespace KTPO4311.Husnutdinov.UnitTest.src.LogAn
             StringAssert.Contains("Невозможно вызвать веб-сервис", mockEmail.lastSubject);
         }
 
+        [Test]
+        public void Analyze_WhenAnalyzed_FiredEvent()
+        {
+            bool analyzedFired = false;
+
+            LogAnalyzer logAnalyzer = new LogAnalyzer();
+
+            logAnalyzer.Analyzed += delegate ()
+            {
+                analyzedFired = true;
+            };
+
+            logAnalyzer.Analyze("validfilename.vld");
+
+            Assert.IsTrue(analyzedFired);
+        }
+
         [TearDown]
         public void AfterEachTest()
         {

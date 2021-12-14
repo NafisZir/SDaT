@@ -3,9 +3,11 @@
 namespace KTPO4311.Husnutdinov.Lib.src.LogAn
 {
     /// <summary>Анализатор лог. файлов</summary>
-    public class LogAnalyzer
+    public class LogAnalyzer : ILogAnalyze
     /// <summary>Проверка правильности имени файла</summary>
     {
+        /// <summary>Объявление события</summary>
+        public event LogAnalyzerAction Analyzed = null;
         IExtensionManager extensionManager;
 
         public LogAnalyzer()
@@ -41,6 +43,25 @@ namespace KTPO4311.Husnutdinov.Lib.src.LogAn
                     IEmailService emailService = EmailServiceFactory.Create();
                     emailService.SendEmail("someone@somewhere.com", "Невозможно вызвать веб-сервис", e.Message);
                 }
+            }
+
+            //Обработка лога
+            //..
+
+            //Вызов события
+            if(Analyzed != null)
+            {
+                // Analyzed();
+                RaiseAnalyzedEvent();
+            }
+        }
+
+        protected void RaiseAnalyzedEvent()
+        {
+            //Вызов события
+            if (Analyzed != null)
+            {
+                Analyzed();
             }
         }
     }
