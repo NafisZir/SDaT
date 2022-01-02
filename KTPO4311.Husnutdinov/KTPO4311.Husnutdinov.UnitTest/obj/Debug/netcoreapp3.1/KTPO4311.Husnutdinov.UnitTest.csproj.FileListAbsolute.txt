@@ -115,3 +115,6 @@ C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.UnitTest\bin\Debug\netcoreapp3.1
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.UnitTest\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.UnitTest\bin\Debug\netcoreapp3.1\Castle.Core.dll
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.UnitTest\bin\Debug\netcoreapp3.1\NSubstitute.dll
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.UnitTest\bin\Debug\netcoreapp3.1\Castle.Windsor.dll
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.UnitTest\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.UnitTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll

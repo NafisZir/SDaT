@@ -31,3 +31,8 @@ C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\obj\Debug\netcoreapp3.1\
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\obj\Debug\netcoreapp3.1\KTPO4311.Husnutdinov.Service.dll
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\obj\Debug\netcoreapp3.1\KTPO4311.Husnutdinov.Service.pdb
 C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\obj\Debug\netcoreapp3.1\KTPO4311.Husnutdinov.Service.genruntimeconfig.cache
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\bin\Debug\netcoreapp3.1\Castle.Windsor.dll
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\C#\KTPO4311.Husnutdinov\KTPO4311.Husnutdinov.Service\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
